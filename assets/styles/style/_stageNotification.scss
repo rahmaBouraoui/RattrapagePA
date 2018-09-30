@@ -1,0 +1,60 @@
+@import "../skyflow/variables";
+.btnstageBTN-notification-container {
+    .btnstageBTN-notification-header {
+        padding: 10px;
+        font-weight: bolder;
+        color: #FFFFFF;
+        background-color: $color-info;
+    }
+    .btnstageBTN-notification-body {
+        padding: 10px;
+        display: flex;
+        > img, p {
+            align-self: center;
+        }
+        > img {
+            height: 35px;
+        }
+        > p {
+            padding-left: 10px;
+            font-size: 14px;
+        }
+    }
+    .btnstageBTN-notification-closeButton {
+        img {
+            height: 12px;
+            transition: all 0.2s;
+            &:hover {
+                transform: scale(1.4);
+            }
+        }
+    }
+    &.btnstageBTN-notification-success {
+        .btnstageBTN-notification-header {
+            background-color: transparent;
+            color: $color-success;
+            border-bottom: 1px solid $color-success;
+        }
+    }
+    &.btnstageBTN-notification-error {
+        .btnstageBTN-notification-header {
+            //background-color: $color-error;
+            background-color: transparent;
+            color: $color-error;
+            border-bottom: 1px solid $color-error;
+        }
+    }
+    &.btnstageBTN-notification-info {
+        .btnstageBTN-notification-header {
+            //background-color: $color-info;
+            background-color: transparent;
+            color: $color-info;
+            border-bottom: 1px solid $color-info;
+        }
+    }
+    &.btnstageBTN-notification-warning {
+        .btnstageBTN-notification-header {
+            background-color: $color-warning
+        }
+    }
+}

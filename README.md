@@ -23,7 +23,7 @@ docker-compose down
 docker-compose stop/start/restart
 ```
 
-###### Enter into Stage container
+###### Enter into stage container
 ```docker
 docker-compose exec app sh
 ```

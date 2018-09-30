@@ -1,0 +1,117 @@
+@import "../../skyflow/variables";
+@import "../../mixins";
+
+
+#user-login {
+
+  .title {
+    font-size: 30px;
+    color: $btnstage-color;
+    text-align: center;
+    font-weight: bolder;
+    margin-bottom: 50px;
+  }
+
+  .register {
+    a {
+      color: $btnstage-color;
+      font-style: italic;
+    }
+  }
+
+  .login-error {
+    text-align: center;
+    padding: 0 15px;
+    color: $color-error;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  &.confirm-registration {
+    font-size: 25px;
+
+    .info-container {
+      text-align: center;
+      .email {
+        color: $color-success;
+      }
+    }
+
+  }
+
+  .brand-container {
+
+    text-align: center;
+
+    .error {
+      font-size: 13px;
+      color: #DC3545;
+    }
+
+    .image-container {
+
+      height: 100px;
+      margin-bottom: 15px;
+      background-color: #adadad;
+      @include border-radius(10px);
+      img {
+        object-fit: contain;
+        height: 100%;
+        width: 100%;
+      }
+
+      &.selected {
+        background-color: transparent;
+      }
+
+    }
+
+    .brand-type  {
+      color: $btnstage-color;
+      margin-bottom: 15px;
+    }
+
+    .form-errors-container {
+
+      margin-bottom: 15px;
+
+      ul {
+        list-style: none;
+        text-align: left;
+        font-size: 13px;
+        color: $color-error;
+      }
+
+    }
+
+    .btnstageBTN-btn {
+      display: inline-block;
+      color: $btnstage-color;
+      border: 2px solid $btnstage-color;
+      cursor: pointer;
+      &:hover {
+        background-color: $btnstage-color;
+        color: #ffffff;
+
+      }
+
+    }
+
+  }
+
+  .change-password-container {
+
+    padding: 30px;
+
+    background-color: #e6e6e6;
+
+    @include border-radius(10px);
+
+    .title {
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+  }
+
+}

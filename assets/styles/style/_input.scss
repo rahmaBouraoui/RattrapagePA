@@ -1,0 +1,123 @@
+@import "../skyflow/variables";
+@import "../mixins";
+
+.btnstageBTN-textarea, .btnstageBTN-input{
+  width: 100%;
+  font-size: 16px;
+  color: $btnstage-color;
+  background-color: transparent;
+  //font-style: italic;
+
+  &::-webkit-input-placeholder {
+    color: $btnstage-color;
+    font-style: italic;
+    opacity: 0.4;
+  }
+  &::-moz-placeholder {
+    color: $btnstage-color;
+    font-style: italic;
+    opacity: 0.4;
+  }
+  &:-ms-input-placeholder {
+    color: $btnstage-color;
+    font-style: italic;
+    opacity: 0.4;
+  }
+  &:-moz-placeholder {
+    color: $btnstage-color;
+    font-style: italic;
+    opacity: 0.4;
+  }
+
+}
+
+.btnstageBTN-textarea {
+  padding: 15px;
+  border: 1px solid $btnstage-color;
+  min-height: 200px;
+  resize: none;
+  @include border-radius(40px)
+}
+
+.btnstageBTN-input {
+  width: 100%;
+  //height: 45px;
+  display: block;
+  //position: relative;
+  i, img {
+    font-size: 25px;
+    position: absolute;
+    left: 0;
+    top: 5px;
+    cursor: pointer;
+    &.icon-mail {
+      font-size: 20px;
+      top: 10px;
+    }
+    &.icon-partners {
+      font-size: 18px;
+      top: 12px;
+    }
+  }
+  img {
+    top: 0;
+    width: 30px;
+  }
+  input[type="text"], input[type="date"],
+  input[type="password"],
+  input[type="email"],
+  input[type="number"], textarea {
+    width: 100%;
+    height: 45px;
+    font-size: 15px;
+    color: $font-color;
+    padding: 0 15px 0 15px;
+    //color: $btnstage-color;
+    background-color: transparent;
+    //border: none;
+    border: 1px solid $btnstage-color;
+    @include border-radius(40px);
+    &::-webkit-input-placeholder {
+      color: $btnstage-color;
+      font-style: italic;
+      opacity: 0.4;
+      font-size: 14px;
+    }
+    &::-moz-placeholder {
+      color: $btnstage-color;
+      font-style: italic;
+      opacity: 0.4;
+      font-size: 14px;
+    }
+    &:-ms-input-placeholder {
+      color: $btnstage-color;
+      font-style: italic;
+      opacity: 0.4;
+      font-size: 14px;
+    }
+    &:-moz-placeholder {
+      color: $btnstage-color;
+      font-style: italic;
+      opacity: 0.4;
+      font-size: 14px;
+    }
+  }
+  textarea {
+    padding: 15px;
+  }
+  ul {
+    list-style: none;
+    li {
+      font-size: 13px;
+      color: #DC3545;
+    }
+  }
+
+  select {
+    display: block;
+    width: 100%;
+    padding: 15px;
+  }
+
+
+}

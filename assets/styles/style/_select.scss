@@ -1,0 +1,73 @@
+@import "../skyflow/variables";
+@import "../mixins";
+
+
+.btnstageBTN-select {
+
+  i.arrow-down {
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    right: 0;
+    left: initial;
+    top: 10px;
+    border: 2px solid $color-secondary;
+    transform: rotate(45deg);
+    border-left: 0;
+    border-top: 0;
+  }
+
+  input.label-input {
+    padding-right: 30px;
+  }
+
+  .skyflow-select-container {
+
+    .skyflow-select-close-container {
+      font-size: 13px;
+      top: 5px;
+    }
+
+    .skyflow-select-search-container {
+
+      input.skyflow-select-input {
+        padding-left: 0;
+      }
+
+    }
+
+    .skyflow-select-items-container {
+
+      .skyflow-select-item {
+        //padding-left: 0;
+        color: $color-secondary;
+        font-size: 16px;
+
+        text-align: left !important;
+
+        &:after {
+          border-color: $color-primary;
+        }
+
+        img.skyflow-select-item-icon {
+          position: initial;
+        }
+
+        &:hover {
+          background-color: $color-primary;
+          color: #FFFFFF;
+          &:after {
+            border-color: #FFFFFF;
+          }
+        }
+
+      }
+
+    }
+
+  }
+
+
+}
+
+

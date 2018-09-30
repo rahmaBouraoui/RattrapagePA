@@ -36,3 +36,5 @@ yarn-error.log
 
 /.idea/
 /public/uploads/
+
+/assets/node_modules/

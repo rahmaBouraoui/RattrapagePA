@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Twib | Connexion{% endblock %}
+{% block title %}stage | Connexion{% endblock %}
 
 {% block container %}
 
@@ -49,7 +49,7 @@
                 <div class="_box  _container _container-1 _xs-container-2">
 
                     <div class="_box _text-center _xs-text-left">
-                        <label class="stage-checkbox checkbox-btnTwib">
+                        <label class="stage-checkbox checkbox-btnstage">
                             <input type="checkbox" name="_remember_me" />
                             <span class="mark"></span>
                             Se souvenir de moi
@@ -62,7 +62,7 @@
 
             <div class="btn-container">
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-                {% include "widgets/SubmitButton.html.twig" with {type: 'btnTwib', text:
+                {% include "widgets/SubmitButton.html.twig" with {type: 'btnstage', text:
                     'Connexion'} %}
             </div>
 
