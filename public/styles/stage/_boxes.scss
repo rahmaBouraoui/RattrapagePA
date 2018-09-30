@@ -1,0 +1,304 @@
+@import "../skyflow/variables";
+@import "../mixins";
+
+
+.offer-box {
+
+  height: 545px;
+  overflow: hidden;
+  position: relative;
+
+  background-color: #fff;
+
+  .title {
+
+    color: $btnTwib-color;
+    font-size: 22px;
+    font-weight: bold;
+
+    padding: 30px 30px 15px 30px;
+
+    height: 85px;
+
+    //border: 1px solid red;
+
+  }
+
+  .description {
+
+    padding: 15px 30px;
+    font-size: 16px;
+    overflow: hidden;
+
+    //border: 1px solid red;
+
+    &.short {
+      height: 170px;
+    }
+
+    &.long {
+      height: 300px;
+    }
+
+    .more, .less {
+      cursor: pointer;
+      text-decoration: underline;
+      font-weight: bold;
+      //font-style: italic;
+      color: $btnTwib-color;
+      font-size: 14px;
+      &:hover {
+        color: $btnTwib-color;
+      }
+    }
+
+  }
+
+  .address {
+    padding: 15px 30px;
+
+    font-size: 14px;
+
+    i, span {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    i {
+      font-size: 19px;
+      &::before {
+        color: $font-color;
+      }
+    }
+
+
+  }
+
+  .number {
+
+    padding: 15px 30px;
+
+    color: $btnTwib-color;
+    font-size: 16px;
+    font-weight: bold;
+
+    .count {
+      font-size: 36px;
+    }
+
+    .total {
+      color: $font-color;
+    }
+
+  }
+
+  .attribute {
+    padding: 15px 30px;
+    text-align: center;
+    button {
+      display: inline-block;
+      vertical-align: middle;
+      background-color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      i::before {
+        color: $btnTwib-color;
+      }
+      i.full {
+        display: none;
+      }
+      &:hover {
+        i::before {
+          color: #ffffff;
+        }
+        i.empty {
+          display: none;
+        }
+        i.full {
+          display: inline;
+        }
+      }
+    }
+
+    .help {
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 32px;
+      &::before {
+        color: $font-color;
+      }
+    }
+
+  }
+
+  .footer {
+
+    background-color: #e7e7e7;
+    height: 85px;
+    position: absolute;
+    bottom: -85px;
+    @include transition();
+
+
+    ._box {
+
+      height: 100%;
+      display: block;
+      text-decoration: none;
+      text-align: center;
+      font-size: 16px;
+      cursor: pointer;
+      position: relative;
+
+      i, span {
+        position: absolute;
+        left: 0;
+        right: 0;
+      }
+      i {
+        bottom: 35px;
+      }
+      span {
+        bottom: 10px;
+      }
+
+      i {
+        display: block;
+        font-size: 40px;
+        &::before {
+          color: $font-color;
+        }
+      }
+
+      &:hover {
+        color: #ffffff;
+        i::before {
+          color: #ffffff;
+        }
+        i.empty {
+          display: none;
+        }
+        i.full {
+          display: inline;
+        }
+      }
+
+    }
+
+    a {
+      display: block;
+      color: $font-color;
+    }
+
+    .delete {
+      position: relative;
+
+      i {
+        font-size: 25px;
+      }
+      &:hover {
+        background-color: #BD393A;
+      }
+    }
+
+    .update {
+      &:hover {
+        background-color: #FF6F00;
+      }
+    }
+
+    .duplicate {
+      &:hover {
+        background-color: #1871C6;
+      }
+    }
+
+
+  }
+
+  &:hover {
+
+    .footer {
+      //height: 153px;
+      bottom: 0;
+    }
+
+  }
+
+}
+
+
+.offer-box.student{
+
+  height: 580px;
+  position: relative;
+
+  .brand-container {
+
+    height: 40px;
+    width: 100px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+
+  }
+
+  .title {
+    margin-top: 30px;
+    color: $student-color;
+
+  }
+
+  .sub-title {
+    padding: 0 30px;
+    color: $student-color;
+  }
+
+  .attribute {
+      .btn-student {
+        color: $student-color;
+        i::before {
+          color: $student-color;
+        }
+        i.full {
+          display: none;
+        }
+        &:hover {
+          color: #FFFFFF;
+          i::before {
+            color: #ffffff;
+          }
+          i.empty {
+            display: none;
+          }
+          i.full {
+            display: inline;
+          }
+        }
+      }
+  }
+
+  .number {
+
+    color: $student-color;
+
+  }
+
+  .footer {
+
+    .attribute {
+
+      margin: auto;
+
+    }
+
+  }
+
+
+}

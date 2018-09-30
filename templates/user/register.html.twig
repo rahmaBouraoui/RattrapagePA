@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block container %}
+
+    <div id="user-login">
+
+        {{ form_start(form, {'action': path('register'), 'method': 'POST'}) }}
+
+        <div class="title">
+            Inscription
+        </div>
+
+        <div class="info-container _container _container-2">
+
+            <div class="_box _text-center _md-text-left">
+                <label class="stage-input">
+                    Adresse e-mail
+                {{ form_widget(form.username, {'attr': {'placeholder': 'Adresse e-mail'}}) }}
+                    {{ form_errors(form.username) }}
+                </label>
+            </div>
+
+            <div class="_box _text-center _md-text-left">
+                <label class="stage-input">
+                    Mot de passe
+                    {{ form_widget(form.plainPassword.first, {'attr': {'placeholder': 'Mot de passe'}}) }}
+                    {{ form_errors(form.plainPassword.first) }}
+                </label>
+            </div>
+
+            <div class="_box _text-center _md-text-left">
+                <label class="stage-input">
+                    Confirmer votre mot de passe
+                    {{ form_widget(form.plainPassword.second, {'attr': {'placeholder': 'Mot de passe'}}) }}
+                    {{ form_errors(form.plainPassword.second) }}
+                </label>
+            </div>
+
+            <div class="_box _text-center _md-text-left">
+
+                <label>
+                    {{ form_widget(form.cgu) }}
+                    <span class="mark"></span>
+                    J’accepte les <a href="cgu">CGU</a>
+                    {{ form_errors(form.cgu) }}
+                </label>
+
+                <div class="_text-left _m-t-15">
+                    Pour connaître et exercer vos droits, notamment de retrait de votre consentement à l’utilisation des données collectées par ce formulaire,
+                    veuillez consulter notre <a href="cgu">CGU</a>.
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="btn-container">
+            {% include "widgets/SubmitButton.html.twig" with {type: 'btnTwib', text: 'Créer mon compte'} %}
+        </div>
+
+        <div class="register _text-center">
+            <a href="{{ path('login') }}">J'ai déjà un compte</a>
+        </div>
+
+        {{ form_end(form) }}
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block container %}
+
+    <div id="user-login">
+
+        <div class="breadcrumb-container">
+
+            <a href="{{ path('homepage') }}">Accueil</a> >
+            <span>Mon profil</span>
+
+        </div>
+
+        {{ form_start(form, {'action': path('profile'), 'method': 'POST'}) }}
+
+        <div class="title">
+            Mon profil
+        </div>
+
+        <div class="info-container _container _container-2">
+
+            <div class="_box _text-center _md-text-left">
+                <label class="stage-input">
+                    Adresse e-mail
+                    {{ form_widget(form.username, {'attr': {'placeholder': 'Adresse e-mail'}}) }}
+                    {{ form_errors(form.username) }}
+                </label>
+            </div>
+
+            <div class="_box _text-center _md-text-left">
+
+            </div>
+
+            <div class="_box _text-center _md-text-left">
+
+
+            </div>
+
+            <div class="_box _text-center _md-text-left">
+
+                <div class="change-password-container">
+
+                    <p class="title">Changer mon mot de passe</p>
+
+                    <label class="stage-input _m-t-30">
+                        Mot de passe
+                        {{ form_widget(form.plainPassword.first, {'attr': {'placeholder': 'Mot de passe'}}) }}
+                        {{ form_errors(form.plainPassword.first) }}
+                    </label>
+
+                    <label class="stage-input _m-t-30">
+                        Confirmation mot de passe
+                        {{ form_widget(form.plainPassword.second, {'attr': {'placeholder': 'Confirmation mot de passe'}}) }}
+                    </label>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="btn-container">
+            {% include "widgets/SubmitButton.html.twig" with {type: 'btnTwib', text: 'Mettre à jour mes informations'} %}
+        </div>
+
+        {{ form_end(form) }}
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Twib | Connexion{% endblock %}
+
+{% block container %}
+
+    <div id="user-login">
+
+        <p>
+            <br> 
+            <h2>
+                Partagez vos moments inoubliables avec vos amis !
+            </h2>
+            <br>
+            En vous inscrivant sur ce réseau social,
+            vous aurez la possibilité de chercher vos amis et ainsi, 
+            vous aurez la possibilité de partager vos messages avec
+            vos amis, en publiant des messages.
+            Vos amis auront la possibilité d'aimer et de rediffuser votre publication.
+        </p> <br> 
+
+        <form action="{{ path('login') }}" method="post">
+
+            <div class="title">
+                <br> 
+                Connexion
+            </div>
+
+            <div class="info-container _container _container-1">
+
+                {% if error %}
+                    <p class="login-error _text-center">Identifiant ou mot de passe incorrect.</p>
+                {% endif %}
+
+                <div class="_box _text-left">
+                    <label class="stage-input">
+                        Adresse e-mail
+                        <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Adresse e-mail"
+                               autofocus />
+                    </label>
+                </div>
+                <div class="_box _text-left">
+                    <label class="stage-input">
+                        Mot de passe
+                        <input type="password" id="password" name="_password" placeholder="Votre mot de passe"/>
+                    </label>
+                </div>
+
+                <div class="_box  _container _container-1 _xs-container-2">
+
+                    <div class="_box _text-center _xs-text-left">
+                        <label class="stage-checkbox checkbox-btnTwib">
+                            <input type="checkbox" name="_remember_me" />
+                            <span class="mark"></span>
+                            Se souvenir de moi
+                        </label>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="btn-container">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                {% include "widgets/SubmitButton.html.twig" with {type: 'btnTwib', text:
+                    'Connexion'} %}
+            </div>
+
+            <div class="register _text-center">
+                <a href="{{ path('register') }}">Créer un compte</a>
+            </div>
+
+        </form>
+
+    </div>
+
+{% endblock %}

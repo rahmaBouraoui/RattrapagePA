@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Twib{% endblock %}
+
+
+{% block container %}
+
+    <div class="breadcrumb-container">
+
+        <a href="{{ path('homepage') }}">Accueil</a> >
+        <span>CGU</span>
+
+    </div>
+
+    <div id="cgu">
+
+        <h1>Conditions générales d'utilisation</h1>
+
+        <p>
+            Vous devrez créer un compte pour utiliser certains services.
+            Vous êtes responsable de la protection de votre compte ; nous vous invitons
+            donc à utiliser un mot de passe fort et à limiter son utilisation à ce compte.
+            Nous déclinons toute responsabilité en cas de perte ou de préjudice qui
+            découlerait du non-respect par vous de ce qui précède.
+        </p>
+
+        <p>
+            Lorsque vous créerez votre compte, vous aurez la possibilité de suivre des amis,
+            de publier un message, le modifier et le supprimer, suivre le fil d'actualité de vos amis,
+            aimer une publication et la rediffuser.
+        </p>
+
+    </div>
+
+{% endblock %}

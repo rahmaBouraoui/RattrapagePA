@@ -1,0 +1,74 @@
+<div class="offer-box" data-url="{{ path('offer_delete', {'id': offer.id}) }}" data-attribute="{{ path('offer_attribute', {'id': offer.id}) }}">
+
+    <p class="title" title="{{ offer.title }}">
+        {{ offer.title | ellipsis(50) }}
+    </p>
+
+
+    <p class="description short">
+        {{ offer.description | ellipsis(200) }} <span class="more">Plus</span>
+    </p>
+
+    <p class="description long _hide">
+        {{ offer.description }} <span class="less">Masquer</span>
+    </p>
+
+    <div class="address _container _align-top">
+        <p class="_box-7">
+            <i class="stage-icon-signet"></i>
+        </p>
+        <p class="_box-93">
+            {{ offer.address.road }} <br>
+            {{ offer.address.postalCode ~ ' ' ~ offer.address.city }}
+        </p>
+    </div>
+
+
+    <div class="number _container _align-center">
+        <p class="_box-60">
+            Nombre de stage(s) encore disponible(s)
+        </p>
+        <p class="_box-40 _text-right">
+            <span class="count">{{ offer.count }}</span> / <span class="total">{{ offer.number }}</span>
+        </p>
+    </div>
+
+    {% if offer.count > 0 %}
+
+        <div class="attribute">
+
+            <button class="stage-btn btn-company">
+                Attribuer
+                <i class="stage-icon-check empty"></i>
+                <i class="stage-icon-check-rempli full"></i>
+            </button>
+
+            <i class="stage-icon-interro help"></i>
+
+        </div>
+
+    {% endif %}
+
+    <div class="footer _container _container-3">
+
+        <p class="_box delete">
+            {#<i class="stage-icon-trash ignore"></i>#}
+            <i class="stage-icon-supprimer empty"></i>
+            <i class="stage-icon-supprimer-rempli full"></i>
+            <span class="ignore">Supprimer</span>
+        </p>
+
+        <a href="{{ path('offer_edit', {'id': offer.id}) }}" class="_box update">
+            <i class="stage-icon-modifier"></i>
+            <span>Modifier</span>
+        </a>
+
+        <a href="{{ path('offer_duplicate', {'id': offer.id}) }}" class="_box duplicate">
+            <i class="stage-icon-dupliquer"></i>
+            <span>Dupliquer</span>
+        </a>
+
+    </div>
+
+
+</div>

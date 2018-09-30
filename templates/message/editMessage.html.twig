@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Stage numérique{% endblock %}
+
+{% block headerTypeClass %}homepage{% endblock %}
+
+{% block container %}
+
+    <div id="homepage" >
+
+        <div class="section-1">
+
+            <h2>
+                    Publiez vos messages ici ! 
+            </h2><br>
+
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+
+{% endblock %}

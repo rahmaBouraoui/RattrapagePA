@@ -1,0 +1,94 @@
+@import "../variables";
+
+._table {
+  width:100%;
+  table-layout: fixed;
+  thead {
+    tr {
+      th {
+        padding: 15px;
+        text-align: left;
+        vertical-align:middle;
+        font-weight: 500;
+        font-size: 13px;
+        text-transform: uppercase;
+        border-bottom: 1px solid rgba(160,160,160,0.2);
+      }
+    }
+  }
+  tbody {
+    tr {
+      td {
+        padding: 15px;
+        text-align: left;
+        vertical-align:middle;
+        font-weight: 300;
+        font-size: 12px;
+        border-bottom: 1px solid rgba(160,160,160,0.2);
+      }
+    }
+    tr:hover {
+      transition: 0.3s;
+      background-color: #f2f2f2;
+    }
+  }
+}
+
+$c: length($colors);
+
+@for $i from 1 through $c {
+
+  @if $i % 2 != 0 {
+
+    $color: nth($colors, $i);
+    $color-value: nth($colors, $i + 1);
+
+    ._table-#{$color} {
+      background-color: #{$color-value};
+      tbody tr:hover {
+        background-color: darken($color-value, 5%);
+      }
+    }
+
+  }
+
+}
+
+// Responsive
+
+$count: length($breakpoints);
+
+@for $i from 1 through $count {
+
+  @if $i % 2 != 0 {
+
+    $breakpoint: nth($breakpoints, $i);
+    $breakpoint-value: nth($breakpoints, $i + 1);
+
+    @media screen and (min-width: #{$breakpoint-value}px) {
+
+      $c: length($colors);
+
+      @for $i from 1 through $c {
+
+        @if $i % 2 != 0 {
+
+          $color: nth($colors, $i);
+          $color-value: nth($colors, $i + 1);
+
+          ._#{$breakpoint}-table-#{$color} {
+            background-color: #{$color-value};
+            tbody tr:hover {
+              background-color: darken($color-value, 5%);
+            }
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}

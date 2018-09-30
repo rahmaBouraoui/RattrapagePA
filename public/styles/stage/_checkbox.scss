@@ -1,0 +1,81 @@
+@import "../skyflow/variables";
+@import "../mixins";
+
+.btnTwibBTN-checkbox {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  input {
+    display: none;
+  }
+  .mark {
+    height: 20px;
+    width: 20px;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    background-color: transparent;
+    border: 2px solid $color-secondary;
+    @include transition();
+    @include border-radius(30%);
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      width: 0;
+      height: 0;
+      background-color: $color-secondary;
+      @include transition();
+    }
+  }
+  input:checked ~ .mark {
+    &:after {
+      width: 80%;
+      height: 80%;
+      @include border-radius(30%);
+    }
+  }
+
+  &.checkbox-btnTwib {
+    color: $btnTwib-color;
+    .mark {
+      border: 2px solid $btnTwib-color;
+      &:after {
+        background-color: $btnTwib-color;
+      }
+    }
+  }
+
+  &.checkbox-student {
+    color: $student-color;
+    .mark {
+      border: 2px solid $student-color;
+      &:after {
+        background-color: $student-color;
+      }
+    }
+  }
+
+  &.checkbox-btnTwibB {
+    color: $btnTwibB-color;
+    .mark {
+      border: 2px solid $btnTwibB-color;
+      &:after {
+        background-color: $btnTwibB-color;
+      }
+    }
+  }
+
+}
+
+
+
+

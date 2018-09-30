@@ -1,0 +1,190 @@
+@import "skyflow/variables";
+@import "mixins";
+
+#header {
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #F2F2F2;
+  height: $header-height;
+  width: 100%;
+  z-index: 1000;
+  @include box-shadow;
+
+  &.homepage {
+    background-color: transparent;
+  }
+
+  .logo {
+    width: 150px;
+    height: $header-height - 30px;
+    display: inline-block;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    margin: auto 0 auto 0;
+    img {
+      object-fit: contain;
+      height: 100%;
+      width: 100%;
+    }
+    @media screen and (max-width: 480px) {
+      display: none;
+    }
+  }
+
+  .menu-items {
+    height: 41px;
+    display: inline-block;
+    position: absolute;
+    right: 30px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+
+    a {
+      padding: 5px 15px;
+      margin: 0 15px;
+      display: inline-block;
+      font-size: 20px;
+      text-decoration: none;
+      @include border-radius(40px);
+      text-align: center;
+
+      &.company {
+        border: 2px solid $company-color;
+        color: $company-color;
+        &:hover {
+          color: #ffffff;
+          background-color: $company-color;
+        }
+
+      }
+
+    }
+
+    &.is-logged {
+      right: 270px;
+    }
+
+  }
+
+  #menu-container {
+
+    top: 40px;
+    right: 30px;
+    position: absolute;
+
+    .menu {
+      font-size: 20px;
+      color: $color-primary;
+      cursor: pointer;
+    }
+
+    .items-container {
+
+      width: 300px;
+      display: none;
+      list-style: none;
+      position: absolute;
+      right: 0;
+      top: 50px;
+      @include box-shadow;
+
+      li.item {
+        z-index: 1;
+        background-color: $color-primary;
+        border: 0.5px solid lighten($color-primary, 3%);
+        a {
+          padding: 20px;
+          display: block;
+          width: 100%;
+          text-align: left;
+          text-decoration: none;
+          color: $color-gray;
+          @include transition();
+          i {
+            font-size: 2em;
+            display: inline-block;
+            vertical-align: middle;
+          }
+          span {
+            display: inline-block;
+            font-size: 1.3em;
+            vertical-align: middle;
+          }
+          &:hover {
+            background-color: lighten($color-primary, 3%);
+          }
+        }
+      }
+
+      &:before {
+        content: "";
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: -8px;
+        right: 10px;
+        transform: rotate(45deg);
+        background-color: lighten($color-primary, 3%);
+      }
+
+      &.show {
+        display: flex;
+      }
+
+    }
+
+  }
+
+}
+
+
+body.homepage.student, body.student-offers {
+
+  #header {
+
+    a.student {
+
+      background-color: $student-color;
+      color: #FFFFFF;
+
+    }
+
+  }
+
+}
+
+
+body.homepage.teacher {
+
+  #header {
+
+    a.teacher {
+
+      background-color: $teacher-color;
+      color: #FFFFFF;
+
+    }
+
+  }
+
+}
+
+body.homepage.company {
+
+  #header {
+
+    a.company {
+
+      background-color: $company-color;
+      color: #FFFFFF;
+
+    }
+
+  }
+
+}

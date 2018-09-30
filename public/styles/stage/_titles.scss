@@ -1,0 +1,13 @@
+@import "../skyflow/variables";
+@import "../mixins";
+
+.btnTwibBTN-first-title {
+
+  color: $color-primary;
+  font-style: italic;
+  font-weight: bold;
+  padding-bottom: 5px;
+  border-bottom: 2px solid $color-primary;
+  margin-bottom: 15px;
+
+}

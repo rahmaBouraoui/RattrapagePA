@@ -1,0 +1,21 @@
+@mixin box-shadow(){
+  -webkit-box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14),0 1px 10px 0 rgba(0,0,0,0.12),0 2px 4px -1px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14),0 1px 10px 0 rgba(0,0,0,0.12),0 2px 4px -1px rgba(0,0,0,0.2);
+  box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 2px 0 rgba(0, 0, 0, 0.12), 0 0px 0px 0px rgba(0, 0, 0, 0.2)
+
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin transition($time: 0.5s){
+  -webkit-transition: all $time;
+  -moz-transition: all $time;
+  -ms-transition: all $time;
+  -o-transition: all $time;
+  transition: all $time;
+}

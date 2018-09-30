@@ -1,0 +1,78 @@
+@import "../variables";
+
+$button-default-bgc: #263238;
+
+._btn {
+  border: none;
+  background-color: $button-default-bgc;
+  color: #FFF;
+  cursor: pointer;
+  padding: 10px 15px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+
+._btn:hover {
+  background-color: darken($button-default-bgc, 10%);
+}
+
+._btn:focus {
+  outline: 0;
+}
+
+$c: length($colors);
+
+@for $i from 1 through $c {
+
+  @if $i % 2 != 0 {
+
+    $color: nth($colors, $i);
+    $color-value: nth($colors, $i + 1);
+
+    ._btn-#{$color} {
+      background-color: #{$color-value};
+    }
+    ._btn-#{$color}:hover {
+      background-color: darken($color-value, 10%);
+    }
+
+  }
+
+}
+
+// Responsive
+
+$count: length($breakpoints);
+
+@for $i from 1 through $count {
+
+  @if $i % 2 != 0 {
+
+    $breakpoint: nth($breakpoints, $i);
+    $breakpoint-value: nth($breakpoints, $i + 1);
+
+    @media screen and (min-width: #{$breakpoint-value}px) {
+
+      $c: length($colors);
+
+      @for $i from 1 through $c {
+
+        @if $i % 2 != 0 {
+
+          $color: nth($colors, $i);
+          $color-value: nth($colors, $i + 1);
+
+          ._#{$breakpoint}-btn-#{$color} {
+            background-color: #{$color-value}
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}

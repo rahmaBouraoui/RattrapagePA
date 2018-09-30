@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}Inscription{% endblock %}
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="{{ asset('styles/pages/pokerLoader.css') }}">
+    <link rel="stylesheet" href="{{ asset('dist/app.css') }}">
+</head>
+<body class="{% block headerTypeClass %}{% endblock %}">
+
+<header style="display: none" id="header">
+
+    {% if app.user %}
+        <div id="menu-container">
+            <span class="menu">{{ (app.user.username) | ellipsis(15) }}</span>
+            <ul class="items-container _container _container-1">
+
+                {% if not is_granted('ROLE_ADMIN') %}
+                    <li class="item _box">
+                        <a href="{{ path('profile') }}">
+                            <span>Mon profil</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                <li class="item _box">
+                    <a href="{{ path('user_unfollowed') }}">
+                        <span>Chercher des amis</span>
+                    </a>
+                </li>
+
+                <li class="item _box">
+                    <a href="{{ path('logout') }}">
+                        <span>Déconnexion</span>
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div class="_box">
+            <a href="{{ path('message_show') }}">
+                Visualiser le fil d'actualité des amis
+            </a>
+        </div>
+
+        <div class="_box">
+            <a href="{{ path('homepage') }}">
+                Accueil
+            </a>
+        </div>
+
+    {% endif %}
+
+
+</header>
+
+<main style="display: none" id="container">
+
+    {% include "widgets/FlashMessage.html.twig" %}
+
+    {% block container %}{% endblock %}
+
+</main>
+
+<footer style="display: none" id="footer" class="login-footer">
+
+    <img src="{{ asset('images/footer/bulle.png') }}" alt="">
+
+    <a href="{{ path('cgu') }}">CGU</a>
+    <a href="{{ path('legal_notice') }}">Mentions légales</a>
+
+</footer>
+
+{% block javascriptsVars %}{% endblock %}
+
+<script src="{{ asset('dist/app.js') }}"></script>
+
+</body>
+</html>

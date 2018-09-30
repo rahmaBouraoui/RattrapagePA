@@ -1,0 +1,275 @@
+@import "../variables";
+
+// file vars
+$file-border-width: 3px;
+$file-padding: 10px 20px;
+$file-font-size: 1em;
+
+// checkbox vars
+$checkbox-hover: #2980b9;
+$checkbox-border: 2px solid #ccc;
+$mark-color: #2ecc71;
+
+// radio vars
+$radio-background: #2979FF;
+$radio-color: #000;
+
+// text vars
+$text-background: white;
+$text-default-border: #2979FF;
+
+/**
+ * Inputs
+ */
+
+._input{
+
+  &-vertical {
+    @extend ._input;
+
+    display: inline-flex;
+    flex-direction: column;
+  }
+
+  /* input file */
+  $c: length($colors);
+  @for $i from 1 through $c {
+    @if $i % 2 != 0 {
+      $color: nth($colors, $i);
+      $color-value: nth($colors, $i + 1);
+
+      &._file-#{$color} {
+        overflow: hidden;
+        position: relative;
+
+        ._input-file {
+          cursor: pointer;
+          display: block;
+          min-height: 100%;
+          min-width: 100%;
+          opacity: 0;
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+
+        /* style */
+        display: inline-block;
+        padding: $file-padding;
+        background: #ffffff;
+        color: $color-value;
+        font-size: $file-font-size;
+        transition: background 0.5s, color 0.5s;
+        border: $file-border-width solid $color-value;
+
+        &:hover {
+          background: $color-value;
+          color: white;
+          transition: all 0.5s;
+        }
+      }
+    }
+  }
+
+  /* checkbox */
+    /* Checkbox structure */
+    ._input-checkbox {
+      display: none;
+    }
+    ._input-checkbox + label {
+      position: relative;
+      padding-left: 1.95em;
+      cursor: pointer;
+      margin: 3px;
+      padding-top: 0.2em;
+      &:hover:before {
+        border: 2px solid $checkbox-hover;
+      }
+    }
+
+    /* checkbox style */
+    ._input-checkbox {
+      + label:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1.25em;
+        height: 1.25em;
+        border: $checkbox-border;
+        background: #fff;
+        border-radius: 4px;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, .1);
+      }
+
+    }
+
+    /* checked mark style */
+    ._input-checkbox + label:after {
+      position: absolute;
+      top: 3px;
+      left: 9px;
+      content: '';
+      display: block;
+      width: 6px;
+      height: 12px;
+      border: solid $mark-color;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+      transition: all .2s;
+    }
+
+    /* checked mark style changes */
+    ._input-checkbox:not(:checked) + label:after {
+      opacity: 0;
+    }
+    ._input-checkbox:checked + label:after {
+      opacity: 1;
+    }
+
+    /* disabled="disabled" */
+    ._input-checkbox:disabled + label:before {
+      box-shadow: none;
+      border-color: #bbb;
+      background-color: #ddd;
+    }
+    ._input-checkbox:disabled:checked + label:after {
+      color: #999;
+    }
+    ._input-checkbox:disabled + label {
+      color: #aaa;
+    }
+
+  /* radio */
+    ._input-radio {
+      display: none;
+
+      & + label {
+        position: relative;
+        padding-left: 28px;
+        cursor: pointer;
+        line-height: 20px;
+        display: inline-block;
+        color: $radio-color;
+        margin: 3px;
+
+        &:before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 18px;
+          height: 18px;
+          border: 1px solid #ddd;
+          border-radius: 100%;
+      }
+        &:after {
+          content: '';
+          width: 12px;
+          height: 12px;
+          background: $radio-background;
+          position: absolute;
+          top: 4px;
+          left: 4px;
+          border-radius: 100%;
+          transition: all 0.5s ease;
+        }
+      }
+      &:not(:checked) + label:after {
+        opacity: 0;
+      }
+      &:checked + label:after {
+        opacity: 1;
+      }
+    }
+
+  /* switch */
+  $c: length($colors);
+  @for $i from 1 through $c {
+
+    @if $i % 2 != 0 {
+
+      $color: nth($colors, $i);
+      $color-value: nth($colors, $i + 1);
+
+      &._switch-#{$color} {
+        position: relative;
+        display: inline-block;
+        ._input-switch{
+          position: absolute;
+          z-index: 1;
+          width: 100%;
+          opacity: 0;
+          height: 100%;
+          cursor: pointer;
+          & + label {
+            cursor: pointer;
+            text-indent: -9999px;
+            width: 50px;
+            height: 26px;
+            background: grey;
+            display: block;
+            border-radius: 25px;
+            position: relative;
+            &:after {
+              content: '';
+              position: absolute;
+              top: 3px;
+              left: 3px;
+              width: 20px;
+              height: 20px;
+              background: #fff;
+              border-radius: 18px;
+              transition: 0.3s;
+            }
+          }
+          &:checked + label {
+            background: $color-value;
+          }
+          &:checked + label:after {
+            left: calc(100% - 3px);
+            transform: translateX(-100%);
+          }
+        }
+      }
+    }
+  }
+
+  /* text */
+  &-text {
+    padding: 10px;
+    display: block;
+    border: 1px solid #ccc;
+    width: 100%;
+    background: $text-background;
+
+    &:focus {
+      border-color: $text-default-border;
+      box-shadow: 0px 0px 5px $text-default-border;
+      outline: 0;
+      transition: 0.3s;
+    }
+  }
+
+  $c: length($colors);
+  @for $i from 1 through $c {
+    @if $i % 2 != 0 {
+      $color: nth($colors, $i);
+      $color-value: nth($colors, $i + 1);
+      &-text-#{$color} {
+        padding: 10px;
+        display: block;
+        border: 1px solid #ccc;
+        width: 100%;
+        background: $text-background;
+
+        &:focus {
+          border-color: #{$color-value};
+          box-shadow: 0px 0px 5px #{$color-value};
+          outline: 0;
+          transition: 0.3s;
+        }
+      }
+    }
+  }
+}

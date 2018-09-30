@@ -1,0 +1,67 @@
+@import "../variables";
+
+$message-default-bgc: #263238;
+
+._message {
+  top : 0;
+  width: 100%;
+  height: 70px;
+  padding: 23px;
+  font-size: 19px;
+  font-weight:500;
+  color: #FFF;
+  background-color: $message-default-bgc;
+}
+
+$c: length($colors);
+
+@for $i from 1 through $c {
+
+  @if $i % 2 != 0 {
+
+    $color: nth($colors, $i);
+    $color-value: nth($colors, $i + 1);
+
+    ._message-#{$color} {
+      background-color: #{$color-value};
+    }
+
+  }
+
+}
+
+// Responsive
+
+$count: length($breakpoints);
+
+@for $i from 1 through $count {
+
+  @if $i % 2 != 0 {
+
+    $breakpoint: nth($breakpoints, $i);
+    $breakpoint-value: nth($breakpoints, $i + 1);
+
+    @media screen and (min-width: #{$breakpoint-value}px) {
+
+      $c: length($colors);
+
+      @for $i from 1 through $c {
+
+        @if $i % 2 != 0 {
+
+          $color: nth($colors, $i);
+          $color-value: nth($colors, $i + 1);
+
+          ._#{$breakpoint}-message-#{$color} {
+            background-color: #{$color-value}
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}

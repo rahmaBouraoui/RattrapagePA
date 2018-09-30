@@ -1,0 +1,36 @@
+@import "skyflow/variables";
+@import "mixins";
+
+#footer {
+
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #cbdde0;
+  padding: 15px;
+
+  text-align: center;
+
+  img {
+    position: absolute;
+    left: -44px;
+    top: -106px;
+    height: 156px;
+
+  }
+
+  a {
+    color: #035B5F;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 15px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+
+
+}

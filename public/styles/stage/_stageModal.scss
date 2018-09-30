@@ -1,0 +1,100 @@
+@import "../skyflow/variables";
+.btnTwibBTN-modal-container {
+    padding: 5px;
+
+    .btnTwibBTN-modal-header {
+        border-bottom: 2px solid $color-secondary;
+        color: $color-secondary;
+        padding-bottom: 2px;
+        margin: 5px;
+        font-weight: bolder;
+    }
+    .btnTwibBTN-modal-body {
+        margin: 30px 5px;
+        .switch-container {
+            margin-top: 30px;
+            text-align: center;
+            width: 100%;
+            span, label, input {
+                display: inline-block;
+                vertical-align: middle;
+                margin: 0 5px;
+            }
+        }
+        &.modal-info-body {
+            margin: 5px;
+            .album-info-line {
+                margin: 8px 0;
+                .value {
+                    color: $color-success;
+                    font-weight: 500;
+                }
+            }
+        }
+        &.modal-share-body {
+            margin: 50px;
+            text-align: center;
+            button {
+                margin: 5px;
+                min-width: 130px;
+                display: inline-block;
+                background-color: transparent;
+                color: $color-primary;
+                border: 1px solid $color-success;
+                transition: all 0.5s;
+                &:hover {
+                    background-color: $color-success;
+                    color: #ffffff;
+                }
+            }
+        }
+    }
+    .btnTwibBTN-modal-footer {
+        text-align: right;
+        button.btnTwibBTN-btn {
+            font-size: 18px;
+            max-width: 200px;
+        }
+    }
+
+    &.modal-loading {
+        min-width: 100px !important;
+        width: 100px !important;
+        background-color: transparent !important;
+        box-shadow: none !important;
+        .btnTwibBTN-modal-body {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        .btnTwibBTN-modal-header {
+            display: none !important;
+        }
+        .btnTwibBTN-modal-footer {
+            display: none !important;
+        }
+        #spinner-loader {
+            display: block !important;
+        }
+    }
+
+    #btnTwibBTN-modal-accept {
+        background-color: #fff;
+        &:hover {
+            background-color: $btnTwib-color;
+        }
+    }
+
+    #btnTwibBTN-modal-cancel {
+        //background-color: #fff;
+        //border: 2px solid $color-error;
+        //color: $color-error;
+        //&:hover {
+        //    color: #ffffff;
+        //    background-color: $color-error;
+        //}
+    }
+
+}
+.btnTwibBTN-modal-is-open {
+    overflow: hidden;
+}

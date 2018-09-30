@@ -1,0 +1,589 @@
+/**
+ * @package Skyflow Style
+ * @author Yoann Vié <contact@yoannvie.fr>
+ */
+
+@import "../variables";
+
+// Breadcrumbs configuration
+$bc-height-default: 40; /** in pixels (px) */
+$bc-first-color-default: #3D5AFE;
+$bc-middle-color-default: #EEEEEE;
+$bc-last-color-default: #2979FF;
+$bc-heights: 30 40 50; /** in pixels (px) */
+$bc-max-items: 15;
+$bc-first-colors: "red" #F50057 "blue" #3D5AFE "green" #00E676 "yellow" #FFC400 "grey" #EEEEEE;
+$bc-middle-colors: "grey" #EEEEEE;
+$bc-last-colors: "red" #ff1744 "blue" #2979FF "green" #1DE9B6 "yellow" #FFEA00 "grey" #EEEEEE;
+
+/*
+ * default breadcrumb
+ */
+$base-colors-count: length($colors);
+
+._bc {
+  display: flex;
+  height: #{$bc-height-default}px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+  border-radius: 0 #{$bc-height-default/2}px #{$bc-height-default/2}px 0;
+
+  ._bc-item {
+    flex: 1;
+    display: inline-block;
+    line-height: #{$bc-height-default}px;
+    margin-left: -#{$bc-height-default/2}px;
+    text-align: center;
+    background-color: $bc-middle-color-default;
+    box-shadow: 4px 0 2px 0 rgba(0, 0, 0, 0.15);
+    border-radius: 0 #{$bc-height-default/2}px #{$bc-height-default/2}px 0;
+
+    // manage z-index
+    @for $i from 0 through $bc-max-items {
+      &:nth-child(#{$i}) {
+        z-index: #{$bc-max-items - $i};
+      }
+    }
+
+    &:first-child {
+      background-color: $bc-first-color-default;
+      color: white;
+    }
+
+    &:last-child {
+      background-color: $bc-last-color-default;
+      color: white;
+    }
+  }
+
+  @for $base-color from 1 through $base-colors-count {
+    @if $base-color % 2 != 0 {
+      $base-color-name: nth($colors, $base-color);
+      $base-color-value: nth($colors, $base-color + 1);
+
+      ._bc-item._bc-c-#{$base-color-name} {
+        background-color: #{$base-color-value};
+      }
+    }
+  }
+}
+
+/*
+ * breadcrumb heights
+ */
+@each $height in $bc-heights {
+  ._bc-#{$height} {
+    display: flex;
+    height: #{$height}px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+    border-radius: 0 #{$height/2}px #{$height/2}px 0;
+
+    ._bc-item {
+      flex: 1;
+      display: inline-block;
+      line-height: #{$height}px;
+      margin-left: -#{$height/2}px;
+      text-align: center;
+      background-color: $bc-middle-color-default;
+      box-shadow: 4px 0 2px 0 rgba(0, 0, 0, 0.15);
+      border-radius: 0 #{$height/2}px #{$height/2}px 0;
+
+      // manage z-index
+      @for $i from 0 through $bc-max-items {
+        &:nth-child(#{$i}) {
+          z-index: #{$bc-max-items - $i};
+        }
+      }
+
+      &:first-child {
+        background-color: $bc-first-color-default;
+        color: white;
+      }
+
+      &:last-child {
+        background-color: $bc-last-color-default;
+        color: white;
+      }
+    }
+
+    @for $base-color from 1 through $base-colors-count {
+      @if $base-color % 2 != 0 {
+        $base-color-name: nth($colors, $base-color);
+        $base-color-value: nth($colors, $base-color + 1);
+
+        ._bc-item._bc-c-#{$base-color-name} {
+          background-color: #{$base-color-value};
+        }
+      }
+    }
+  }
+}
+
+/*
+ * colors definitions
+ */
+$f-colors-count: length($bc-first-colors);
+$m-colors-count: length($bc-middle-colors);
+$l-colors-count: length($bc-last-colors);
+// first colors
+@for $f-color from 1 through $f-colors-count {
+  @if $f-color % 2 != 0 {
+    $f-color-name: nth($bc-first-colors, $f-color);
+    $f-color-value: nth($bc-first-colors, $f-color + 1);
+    // middle colors
+    @for $m-color from 1 through $m-colors-count {
+      @if $m-color % 2 != 0 {
+        $m-color-name: nth($bc-middle-colors, $m-color);
+        $m-color-value: nth($bc-middle-colors, $m-color + 1);
+        // last colors
+        @for $l-color from 1 through $l-colors-count {
+          @if $l-color % 2 != 0 {
+            $l-color-name: nth($bc-last-colors, $l-color);
+            $l-color-value: nth($bc-last-colors, $l-color + 1);
+
+            ._bc-#{$f-color-name}#{"-"}#{$m-color-name}#{"-"}#{$l-color-name} {
+              display: flex;
+              height: #{$bc-height-default}px;
+              box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+              border-radius: 0 #{$bc-height-default/2}px #{$bc-height-default/2}px 0;
+
+              ._bc-item {
+                flex: 1;
+                display: inline-block;
+                line-height: #{$bc-height-default}px;
+                margin-left: -#{$bc-height-default/2}px;
+                text-align: center;
+                background-color: #{$m-color-value};
+                box-shadow: 4px 0 2px 0 rgba(0, 0, 0, 0.15);
+                border-radius: 0 #{$bc-height-default/2}px #{$bc-height-default/2}px 0;
+
+                // manage z-index
+                @for $i from 0 through $bc-max-items {
+                  &:nth-child(#{$i}) {
+                    z-index: #{$bc-max-items - $i};
+                  }
+                }
+
+                &:first-child {
+                  background-color: #{$f-color-value};
+                  color: white;
+                }
+
+                &:last-child {
+                  background-color: #{$l-color-value};
+                  color: white;
+                }
+              }
+
+              @for $base-color from 1 through $base-colors-count {
+                @if $base-color % 2 != 0 {
+                  $base-color-name: nth($colors, $base-color);
+                  $base-color-value: nth($colors, $base-color + 1);
+
+                  ._bc-item._bc-c-#{$base-color-name} {
+                    background-color: #{$base-color-value};
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/*
+ * fully custom breadcrumbs definition
+ */
+@each $height in $bc-heights {
+  // first colors
+  @for $f-color from 1 through $f-colors-count {
+    @if $f-color % 2 != 0 {
+      $f-color-name: nth($bc-first-colors, $f-color);
+      $f-color-value: nth($bc-first-colors, $f-color + 1);
+      // middle colors
+      @for $m-color from 1 through $m-colors-count {
+        @if $m-color % 2 != 0 {
+          $m-color-name: nth($bc-middle-colors, $m-color);
+          $m-color-value: nth($bc-middle-colors, $m-color + 1);
+          // last colors
+          @for $l-color from 1 through $l-colors-count {
+            @if $l-color % 2 != 0 {
+              $l-color-name: nth($bc-last-colors, $l-color);
+              $l-color-value: nth($bc-last-colors, $l-color + 1);
+
+              ._bc-#{$height}-c-#{$f-color-name}#{"-"}#{$m-color-name}#{"-"}#{$l-color-name} {
+                display: flex;
+                height: #{$height}px;
+                box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+                border-radius: 0 #{$height/2}px #{$height/2}px 0;
+
+                ._bc-item {
+                  flex: 1;
+                  display: inline-block;
+                  line-height: #{$height}px;
+                  margin-left: -#{$height/2}px;
+                  text-align: center;
+                  background-color: #{$m-color-value};
+                  box-shadow: 4px 0 2px 0 rgba(0, 0, 0, 0.15);
+                  border-radius: 0 #{$height/2}px #{$height/2}px 0;
+
+                  // manage z-index
+                  @for $i from 0 through $bc-max-items {
+                    &:nth-child(#{$i}) {
+                      z-index: #{$bc-max-items - $i};
+                    }
+                  }
+
+                  &:first-child {
+                    background-color: #{$f-color-value};
+                    color: white;
+                  }
+
+                  &:last-child {
+                    background-color: #{$l-color-value};
+                    color: white;
+                  }
+                }
+
+                @for $base-color from 1 through $base-colors-count {
+                  @if $base-color % 2 != 0 {
+                    $base-color-name: nth($colors, $base-color);
+                    $base-color-value: nth($colors, $base-color + 1);
+
+                    ._bc-item._bc-c-#{$base-color-name} {
+                      background-color: #{$base-color-value};
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/*
+ * SHARP default
+ */
+._bc-sharp {
+  width: calc(100% - #{$bc-height-default/2}px);
+  display: flex;
+  height: #{$bc-height-default}px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+
+  ._bc-item {
+    flex: 1;
+    position: relative;
+    line-height: #{$bc-height-default}px;
+    text-align: center;
+    background-color: $bc-middle-color-default;
+    box-shadow: 10px 0 40px rgba(0,0,0,0.25);
+    &:after {
+      content:"";
+      position: absolute;
+      left: 100%;
+      top: 0;
+      width: 0;
+      height: 0;
+      border-top: #{$bc-height-default/2}px solid transparent;
+      border-left: #{$bc-height-default/2}px solid $bc-middle-color-default;
+      border-bottom: #{$bc-height-default/2}px solid transparent;
+    }
+
+    // manage z-index
+    @for $i from 0 through $bc-max-items {
+      &:nth-child(#{$i}) {
+        z-index: #{$bc-max-items - $i};
+      }
+    }
+
+    &:first-child {
+      background-color: $bc-first-color-default;
+      color: white;
+      &:after {
+        border-left: #{$bc-height-default/2}px solid $bc-first-color-default;
+      }
+    }
+
+    &:last-child {
+      background-color: $bc-last-color-default;
+      color: white;
+      &:after {
+        border-left: #{$bc-height-default/2}px solid $bc-last-color-default;
+      }
+    }
+  }
+
+  @for $base-color from 1 through $base-colors-count {
+    @if $base-color % 2 != 0 {
+      $base-color-name: nth($colors, $base-color);
+      $base-color-value: nth($colors, $base-color + 1);
+
+      ._bc-item._bc-c-#{$base-color-name} {
+        background-color: #{$base-color-value};
+
+        &:after {
+          border-left: #{$bc-height-default/2}px solid #{$base-color-value};
+        }
+      }
+    }
+  }
+}
+
+/*
+ * SHARP breadcrumb heights
+ */
+@each $height in $bc-heights {
+  ._bc-sharp-#{$height} {
+    width: calc(100% - #{$bc-height-default/2}px);
+    display: flex;
+    height: #{$height}px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+
+    ._bc-item {
+      flex: 1;
+      position: relative;
+      line-height: #{$height}px;
+      text-align: center;
+      background-color: $bc-middle-color-default;
+      box-shadow: 10px 0 40px rgba(0,0,0,0.25);
+      &:after{
+        content:"";
+        position: absolute;
+        left: 100%;
+        top: 0;
+        width: 0;
+        height: 0;
+        border-top: #{$height/2}px solid transparent;
+        border-left: #{$height/2}px solid $bc-middle-color-default;
+        border-bottom: #{$height/2}px solid transparent;
+      }
+
+      // manage z-index
+      @for $i from 0 through $bc-max-items {
+        &:nth-child(#{$i}) {
+          z-index: #{$bc-max-items - $i};
+        }
+      }
+
+      &:first-child {
+        background-color: $bc-first-color-default;
+        color: white;
+        &:after {
+          border-left: #{$bc-height-default/2}px solid $bc-first-color-default;
+        }
+      }
+
+      &:last-child {
+        background-color: $bc-last-color-default;
+        color: white;
+        &:after {
+          border-left: #{$bc-height-default/2}px solid $bc-last-color-default;
+        }
+      }
+    }
+
+    @for $base-color from 1 through $base-colors-count {
+      @if $base-color % 2 != 0 {
+        $base-color-name: nth($colors, $base-color);
+        $base-color-value: nth($colors, $base-color + 1);
+
+        ._bc-item._bc-c-#{$base-color-name} {
+          background-color: #{$base-color-value};
+
+          &:after {
+            border-left: #{$bc-height-default/2}px solid #{$base-color-value};
+          }
+        }
+      }
+    }
+  }
+}
+
+/*
+ * SHARP colors definitions
+ */
+$f-colors-count: length($bc-first-colors);
+$m-colors-count: length($bc-middle-colors);
+$l-colors-count: length($bc-last-colors);
+// first colors
+@for $f-color from 1 through $f-colors-count {
+  @if $f-color % 2 != 0 {
+    $f-color-name: nth($bc-first-colors, $f-color);
+    $f-color-value: nth($bc-first-colors, $f-color + 1);
+    // middle colors
+    @for $m-color from 1 through $m-colors-count {
+      @if $m-color % 2 != 0 {
+        $m-color-name: nth($bc-middle-colors, $m-color);
+        $m-color-value: nth($bc-middle-colors, $m-color + 1);
+        // last colors
+        @for $l-color from 1 through $l-colors-count {
+          @if $l-color % 2 != 0 {
+            $l-color-name: nth($bc-last-colors, $l-color);
+            $l-color-value: nth($bc-last-colors, $l-color + 1);
+
+            ._bc-sharp-#{$f-color-name}#{"-"}#{$m-color-name}#{"-"}#{$l-color-name} {
+              width: calc(100% - #{$bc-height-default/2}px);
+              display: flex;
+              height: #{$bc-height-default}px;
+              box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+
+              ._bc-item {
+                flex: 1;
+                position: relative;
+                line-height: #{$bc-height-default}px;
+                text-align: center;
+                background-color: #{$m-color-value};
+                box-shadow: 10px 0 40px rgba(0,0,0,0.25);
+                &:after{
+                  content:"";
+                  position: absolute;
+                  left: 100%;
+                  top: 0;
+                  width: 0;
+                  height: 0;
+                  border-top: #{$bc-height-default/2}px solid transparent;
+                  border-left: #{$bc-height-default/2}px solid #{$m-color-value};
+                  border-bottom: #{$bc-height-default/2}px solid transparent;
+                }
+
+                // manage z-index
+                @for $i from 0 through $bc-max-items {
+                  &:nth-child(#{$i}) {
+                    z-index: #{$bc-max-items - $i};
+                  }
+                }
+
+                &:first-child {
+                  background-color: #{$f-color-value};
+                  color: white;
+                  &:after {
+                    border-left: #{$bc-height-default/2}px solid $f-color-value;
+                  }
+                }
+
+                &:last-child {
+                  background-color: #{$l-color-value};
+                  color: white;
+                  &:after {
+                    border-left: #{$bc-height-default/2}px solid $l-color-value;
+                  }
+                }
+              }
+
+              @for $base-color from 1 through $base-colors-count {
+                @if $base-color % 2 != 0 {
+                  $base-color-name: nth($colors, $base-color);
+                  $base-color-value: nth($colors, $base-color + 1);
+
+                  ._bc-item._bc-c-#{$base-color-name} {
+                    background-color: #{$base-color-value};
+
+                    &:after {
+                      border-left: #{$bc-height-default/2}px solid #{$base-color-value};
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/*
+ * SHARP fully custom breadcrumbs definition
+ */
+@each $height in $bc-heights {
+  // first colors
+  @for $f-color from 1 through $f-colors-count {
+    @if $f-color % 2 != 0 {
+      $f-color-name: nth($bc-first-colors, $f-color);
+      $f-color-value: nth($bc-first-colors, $f-color + 1);
+      // middle colors
+      @for $m-color from 1 through $m-colors-count {
+        @if $m-color % 2 != 0 {
+          $m-color-name: nth($bc-middle-colors, $m-color);
+          $m-color-value: nth($bc-middle-colors, $m-color + 1);
+          // last colors
+          @for $l-color from 1 through $l-colors-count {
+            @if $l-color % 2 != 0 {
+              $l-color-name: nth($bc-last-colors, $l-color);
+              $l-color-value: nth($bc-last-colors, $l-color + 1);
+
+              ._bc-sharp-#{$height}-c-#{$f-color-name}#{"-"}#{$m-color-name}#{"-"}#{$l-color-name} {
+                width: calc(100% - #{$bc-height-default/2}px);
+                display: flex;
+                height: #{$height}px;
+                box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+
+                ._bc-item {
+                  flex: 1;
+                  position: relative;
+                  line-height: #{$height}px;
+                  text-align: center;
+                  background-color: #{$m-color-value};
+                  box-shadow: 10px 0 40px rgba(0,0,0,0.25);
+                  &:after{
+                    content:"";
+                    position: absolute;
+                    left: 100%;
+                    top: 0;
+                    width: 0;
+                    height: 0;
+                    border-top: #{$height/2}px solid transparent;
+                    border-left: #{$height/2}px solid #{$m-color-value};
+                    border-bottom: #{$height/2}px solid transparent;
+                  }
+
+                  // manage z-index
+                  @for $i from 0 through $bc-max-items {
+                    &:nth-child(#{$i}) {
+                      z-index: #{$bc-max-items - $i};
+                    }
+                  }
+
+                  &:first-child {
+                    background-color: #{$f-color-value};
+                    color: white;
+                    &:after {
+                      border-left: #{$bc-height-default/2}px solid $f-color-value;
+                    }
+                  }
+
+                  &:last-child {
+                    background-color: #{$l-color-value};
+                    color: white;
+                    &:after {
+                      border-left: #{$bc-height-default/2}px solid $l-color-value;
+                    }
+                  }
+                }
+
+                @for $base-color from 1 through $base-colors-count {
+                  @if $base-color % 2 != 0 {
+                    $base-color-name: nth($colors, $base-color);
+                    $base-color-value: nth($colors, $base-color + 1);
+
+                    ._bc-item._bc-c-#{$base-color-name} {
+                      background-color: #{$base-color-value};
+
+                      &:after {
+                        border-left: #{$bc-height-default/2}px solid #{$base-color-value};
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

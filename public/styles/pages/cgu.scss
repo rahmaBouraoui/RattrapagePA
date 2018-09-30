@@ -1,0 +1,27 @@
+@import "../skyflow/variables";
+@import "../mixins";
+
+#cgu {
+
+  h1 {
+    font-size: 20px;
+    color: $twib-color;
+    margin-bottom: 45px;
+    font-weight: bold;
+  }
+
+  h2, h3 {
+    margin: 15px 0;
+    font-size: 18px;
+  }
+
+  h3 {
+    font-size: 16px;
+  }
+
+  p {
+    margin-top: 5px;
+    font-size: 14px;
+  }
+
+}

@@ -1,0 +1,38 @@
+
+###> symfony/framework-bundle ###
+/.env
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> symfony/webpack-encore-pack ###
+/node_modules/
+/public/build/
+npm-debug.log
+yarn-error.log
+###< symfony/webpack-encore-pack ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> symfony/web-server-bundle ###
+/.web-server-pid
+###< symfony/web-server-bundle ###
+
+###> assets ###
+/public/node_modules/
+/public/dist/
+/public/package-lock.json
+###< assets ###
+
+###> docker ###
+/docker/Dockerfile
+/docker/docker-compose.yml
+/docker/conf/php7/php.ini
+###< docker ###
+
+/.idea/
+/public/uploads/

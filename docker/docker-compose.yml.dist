@@ -1,0 +1,63 @@
+version: "2"
+
+services:
+
+    stage:
+        container_name: stage
+        build: ./
+        ports:
+            - 8010:80
+        volumes:
+            - ../:/var/www/Stage
+            - ./conf/apache2:/etc/apache2
+            - ./conf/php7/php.ini:/etc/php7/php.ini:ro
+
+    database:
+        container_name: database
+        image: mariadb:10.3
+        restart: always
+        volumes:
+            - ../../database/stage:/var/lib/mysql
+            - ./conf/mariadb:/etc/mysql
+        environment:
+            MYSQL_DATABASE: db
+            MYSQL_USER: user
+            MYSQL_PASSWORD: pw
+            MYSQL_ROOT_PASSWORD: pw
+
+    adminer:
+        container_name: adminer
+        image: adminer:latest
+        restart: always
+        environment:
+            ADMINER_PLUGINS: 'tables-filter tinymce'
+            ADMINER_DESIGN: 'pepa-linha'
+        ports:
+            - 8011:8080
+
+    composer:
+        container_name: composer
+        image: composer
+        volumes:
+            - ..:/app
+        # Uncomment the line below if you want to run the 'composer update' command when the container starts.
+        #command: ["composer", "update"]
+        # Comment this line if you don't want to keep container running
+        command: "tail -f /dev/null"
+
+    assets:
+        container_name: assets
+        image: node:alpine
+        working_dir: /var/www/assets
+        restart: always
+        volumes:
+            - ../public:/var/www/assets
+        command: "tail -f /dev/null"
+
+    mail:
+        container_name: mail
+        image: mailhog/mailhog
+        restart: always
+        ports:
+            - 8025:8025
+            - 1025:1025

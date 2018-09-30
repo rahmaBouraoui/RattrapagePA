@@ -1,0 +1,42 @@
+/**
+ * @package Skyflow Style
+ * @author Yoann Vié <contact@yoannvie.fr>
+ */
+
+@import "../variables";
+
+// Images sizes
+$img-sizes: 10 20 30 40 50 60 70 80 90 100 150 200 250 300 400 500 600;
+$thumbnails-sizes: 5 10 15 20 25 30 35 40 45 50 60 70 80 90 100 110 120 130 140 150;
+
+// circle images
+@each $item in $img-sizes {
+  ._img-s-#{$item} { border-radius: 50%; object-fit: cover; width: #{$item}px; height: #{$item}px;}
+}
+// thumbnails
+@each $item in $thumbnails-sizes {
+  ._thumbs-#{$item} img { width: #{$item}px;}
+  ._thumbs-w-#{$item} img { width: #{$item}px;}
+  ._thumbs-h-#{$item} img { height: #{$item}px;}
+}
+
+// Responsive
+$count: length($breakpoints);
+
+@for $i from 1 through $count {
+  @if $i % 2 != 0 {
+    $breakpoint: nth($breakpoints, $i);
+    $breakpoint-value: nth($breakpoints, $i + 1);
+
+    @media screen and (max-width: #{$breakpoint-value}px) {
+      @each $item in $img-sizes {
+        ._#{$breakpoint}-img-s-#{$item} { border-radius: 50%; object-fit: cover; width: #{$item}px; height: #{$item}px;}
+      }
+      @each $item in $thumbnails-sizes {
+        ._#{$breakpoint}-thumbs-#{$item} img { width: #{$item}px;}
+        ._#{$breakpoint}-thumbs-w-#{$item} img { width: #{$item}px;}
+        ._#{$breakpoint}-thumbs-h-#{$item} img { height: #{$item}px;}
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+security:
+    encoders:
+        App\Entity\User:
+            algorithm: bcrypt
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+#        in_memory: { memory: ~ }
+        our_db_provider:
+            entity:
+                class: App\Entity\User
+                property: username
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            pattern:    ^/
+            anonymous: ~
+            provider: our_db_provider
+            remember_me:
+                secret:   '%kernel.secret%'
+                lifetime: 604800 # 1 week in seconds
+                path:     /
+#            switch_user: true
+#            https://symfony.com/doc/current/security/impersonating_user.html
+#            http://example.com/somewhere?_switch_user=thomas
+#            http://example.com/somewhere?_switch_user=_exit
+#            anonymous: true
+
+            # activate different ways to authenticate
+
+            # http_basic: ~
+            # https://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+
+            logout:
+                path: logout
+                target: login
+            form_login:
+                login_path: login
+                check_path: login
+                use_referer: true
+#                always_use_default_target_path: true
+                default_target_path: homepage
+#                use_forward: true
+                csrf_token_generator: security.csrf.token_manager
+#                csrf_parameter: _csrf_security_token
+#                csrf_token_id: a_private_string
+            # https://symfony.com/doc/current/reference/configuration/security.html#reference-security-firewall-form-login
+            # https://symfony.com/doc/current/cookbook/security/form_login_setup.html
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+#        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    access_control:
+        - { path: ^/(login|logout|register), roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/cgu$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/legal-notice$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: ROLE_USER }

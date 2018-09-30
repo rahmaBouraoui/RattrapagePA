@@ -1,0 +1,7 @@
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="stage-flash-message" style="display: none" data-type="{{ label | title}}">
+            {{ message | raw('html') }}
+        </div>
+    {% endfor %}
+{% endfor %}
