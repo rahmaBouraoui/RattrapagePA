@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}stage | Connexion{% endblock %}
+{% block title %}Twib | Connexion{% endblock %}
 
 {% block container %}
 
@@ -62,7 +62,7 @@
 
             <div class="btn-container">
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-                {% include "widgets/SubmitButton.html.twig" with {type: 'btnstage', text:
+                {% include "widgets/SubmitButton.html.twig" with {type: 'company', text:
                     'Connexion'} %}
             </div>
 
